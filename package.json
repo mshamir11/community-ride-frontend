@@ -1,6 +1,6 @@
 {
-  "homepage": "http://mshamir11.github.io/community-rides/#",
-  "name": "community-rides-frontend",
+  "homepage": "http://mshamir11.github.io/community-ride-frontend/#",
+  "name": "community-ride-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
