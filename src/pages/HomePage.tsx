@@ -1,4 +1,11 @@
-import Rides from "./Rides";
+import Carousel, { ReactElasticCarouselProps } from "react-elastic-carousel";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+import Rides from "../components/Rides";
+import { IRide } from "../types/Rides";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+
+const dummy_data: IRide = { title: "test" };
 
 function HomePage() {
 	return (
@@ -9,29 +16,31 @@ function HomePage() {
 						Community Rides
 					</div>
 				</div>
-			</section>
+			</section>	
 
-			<div className="upcoming-rides rides">
-				<h2>Upcoming Rides</h2>
-				{/* TODO Create a carousel for the component */}
-				<div className="ride-components">
-					{/* TODO Create a html component for the ride details */}
-					{getRideComponents(5)}
+			<div className="upcoming-rides">
+				<h1>Upcoming Rides</h1>
+
+				<div className="group relative">
+					<ChevronLeftIcon className="absolute top-0 bottom-0 m-auto left-2 z-40 h-9 w-9 opacity-0 hover:scale-125 group-hover:opacity-100" />
+
+						<div className="flex overflow-x-scroll scrollbar-hide">
+							<Rides ride_data={dummy_data} />
+							<Rides ride_data={dummy_data} />
+							<Rides ride_data={dummy_data} />
+							<Rides ride_data={dummy_data} />
+							<Rides ride_data={dummy_data} />
+							<Rides ride_data={dummy_data} />
+							<Rides ride_data={dummy_data} />
+						</div>
+
+					<ChevronRightIcon className="absolute top-0 bottom-0 m-auto right-2 z-40 h-9 w-9 opacity-0 hover:scale-125 group-hover:opacity-100" />
+					</div>
+					
 				</div>
 			</div>
-			<div className="past-rides rides">
-				<h2>Past Rides</h2>
-			</div>
-		</div>
+		
 	);
-}
-
-function getRideComponents(count: number) {
-	var elements = [];
-	for (let i = 1; i < count; i++) {
-		elements.push(<Rides component_number={i} />);
-	}
-	return elements;
 }
 
 export default HomePage;
