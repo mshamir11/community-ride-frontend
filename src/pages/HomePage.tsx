@@ -1,6 +1,3 @@
-import Carousel, { ReactElasticCarouselProps } from "react-elastic-carousel";
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
 import Rides from "../components/Rides";
 import { IRide } from "../types/Rides";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
