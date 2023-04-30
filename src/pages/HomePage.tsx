@@ -9,6 +9,7 @@ function HomePage() {
 	// Create a useRef hook to store a reference to the element
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const [isMoved, setIsMoved] = useState(false);
+	const [isRightScrollEnd, setIsRightScrollEnd] = useState(true);
 
 	// Create a function to handle the scroll event
 	const handleScroll = (direction: String) => {
@@ -18,6 +19,22 @@ function HomePage() {
 			const { scrollLeft, clientWidth } = scrollRef.current;
 			const scrollTo = direction === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth;
 			scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+		}
+	};
+
+	const handleScrollEnd = () => {
+		if (scrollRef.current) {
+			if (Math.ceil(scrollRef.current.scrollWidth - scrollRef.current.scrollLeft) === scrollRef.current.clientWidth) {
+				setIsRightScrollEnd(false);
+			} else {
+				setIsRightScrollEnd(true);
+			}
+
+			if (Math.ceil(scrollRef.current.scrollLeft) === 0) {
+				setIsMoved(false);
+			} else {
+				setIsMoved(true);
+			}
 		}
 	};
 
@@ -40,13 +57,16 @@ function HomePage() {
 						onClick={() => handleScroll("left")}
 					/>
 
-					<div ref={scrollRef} className="flex overflow-x-scroll scrollbar-hide">
+					<div ref={scrollRef} className="flex overflow-x-scroll scrollbar-hide" onScroll={handleScrollEnd}>
 						{[...Array(20)].map(() => (
 							<Rides ride_data={dummy_data} />
 						))}
 					</div>
 
-					<ChevronRightIcon className="carousel-button right-2" onClick={() => handleScroll("right")} />
+					<ChevronRightIcon
+						className={`carousel-button right-2 ${!isRightScrollEnd && "hidden"}`}
+						onClick={() => handleScroll("right")}
+					/>
 				</div>
 			</div>
 		</div>
