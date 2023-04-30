@@ -1,10 +1,26 @@
+import { useRef, useState } from "react";
 import Rides from "../components/Rides";
 import { IRide } from "../types/Rides";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { ChevronLeftIcon, ChevronRightIcon, HandIcon } from "@heroicons/react/solid";
 
 const dummy_data: IRide = { title: "test" };
 
 function HomePage() {
+	// Create a useRef hook to store a reference to the element
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const [isMoved, setIsMoved] = useState(false);
+
+	// Create a function to handle the scroll event
+	const handleScroll = (direction: String) => {
+		setIsMoved(true);
+
+		if (scrollRef.current) {
+			const { scrollLeft, clientWidth } = scrollRef.current;
+			const scrollTo = direction === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth;
+			scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+		}
+	};
+
 	return (
 		<div className="community-ride">
 			<section id="hero">
@@ -13,30 +29,27 @@ function HomePage() {
 						Community Rides
 					</div>
 				</div>
-			</section>	
+			</section>
 
 			<div className="upcoming-rides">
 				<h1>Upcoming Rides</h1>
 
 				<div className="group relative">
-					<ChevronLeftIcon className="absolute top-0 bottom-0 m-auto left-2 z-40 h-9 w-9 opacity-0 hover:scale-125 group-hover:opacity-100" />
+					<ChevronLeftIcon
+						className={`carousel-button left-2 ${!isMoved && "hidden"}`}
+						onClick={() => handleScroll("left")}
+					/>
 
-						<div className="flex overflow-x-scroll scrollbar-hide">
+					<div ref={scrollRef} className="flex overflow-x-scroll scrollbar-hide">
+						{[...Array(20)].map(() => (
 							<Rides ride_data={dummy_data} />
-							<Rides ride_data={dummy_data} />
-							<Rides ride_data={dummy_data} />
-							<Rides ride_data={dummy_data} />
-							<Rides ride_data={dummy_data} />
-							<Rides ride_data={dummy_data} />
-							<Rides ride_data={dummy_data} />
-						</div>
-
-					<ChevronRightIcon className="absolute top-0 bottom-0 m-auto right-2 z-40 h-9 w-9 opacity-0 hover:scale-125 group-hover:opacity-100" />
+						))}
 					</div>
-					
+
+					<ChevronRightIcon className="carousel-button right-2" onClick={() => handleScroll("right")} />
 				</div>
 			</div>
-		
+		</div>
 	);
 }
 

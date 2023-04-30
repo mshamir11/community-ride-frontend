@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 #hero {
-  background-image: url('images/bike_ride.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+	background-image: url("images/bike_ride.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  color: white;
+	font-size: 3rem;
+	font-weight: 700;
+	color: white;
+}
+
+.carousel-button {
+	@apply text-gray-700 absolute top-0 bottom-0 m-auto z-40 h-16 w-16 opacity-0 hover:scale-125 group-hover:opacity-100;
 }
