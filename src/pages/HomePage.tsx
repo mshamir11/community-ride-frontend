@@ -49,7 +49,7 @@ function HomePage() {
 			</section>
 
 			<div className="upcoming-rides">
-				<h1>Upcoming Rides</h1>
+				<h1 className="text-3xl p-4">Upcoming Rides</h1>
 
 				<div className="group relative">
 					<ChevronLeftIcon
