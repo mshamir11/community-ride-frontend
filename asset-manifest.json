@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/community-ride-frontend/static/css/main.d2b4fd6a.css",
-    "main.js": "/community-ride-frontend/static/js/main.918af415.js",
+    "main.css": "/community-ride-frontend/static/css/main.600c8c0a.css",
+    "main.js": "/community-ride-frontend/static/js/main.0cfa50b7.js",
     "static/media/bike_ride.jpg": "/community-ride-frontend/static/media/bike_ride.57b188f5b54870dabc69.jpg",
     "index.html": "/community-ride-frontend/index.html",
-    "main.d2b4fd6a.css.map": "/community-ride-frontend/static/css/main.d2b4fd6a.css.map",
-    "main.918af415.js.map": "/community-ride-frontend/static/js/main.918af415.js.map"
+    "main.600c8c0a.css.map": "/community-ride-frontend/static/css/main.600c8c0a.css.map",
+    "main.0cfa50b7.js.map": "/community-ride-frontend/static/js/main.0cfa50b7.js.map"
   },
   "entrypoints": [
-    "static/css/main.d2b4fd6a.css",
-    "static/js/main.918af415.js"
+    "static/css/main.600c8c0a.css",
+    "static/js/main.0cfa50b7.js"
   ]
 }
